@@ -17,8 +17,10 @@ body.no-scroll {overflow: hidden}
 #popWrap.show #pop {transform: translateY(-40px); opacity: 1; pointer-events: all;}
 #popWrap.show:before {opacity: 1; pointer-events: all;}
 #pop {background-color: #fff; width: calc(600px - 120px); padding: 50px 60px 60px; z-index: 1; position: absolute; margin: auto auto 40px; top: 100px; left: 0; right: 0; border-radius: 4px; overflow: hidden; transition: all 0.4s ease; display: flex; justify-content: center; align-items: center; flex-direction: column; overflow: scroll;}
+#pop #loader {position: absolute; top: 150px;}
+#pop #loader.hide {display: none}
 #popContent {min-height: 330px; max-width: 480px; overflow: hidden}
-#popContent code {color: #ccc; background-color: #20262e; font-size: 12px; padding: 20px; margin-top: 30px; border-radius: 3px; width: calc(100% - 40px); max-width: 500px; display: inline-block;}
+#popContent code {color: #ccc; background-color: #20262e; font-size: 12px; padding: 20px; margin-top: 30px; border-radius: 3px; width: calc(100% - 40px); display: inline-block;}
 #popContent code + p {text-align: center; margin-bottom: 0}
 #btnWrap {display: flex; justify-content: center; flex-direction: column; width: 100%; margin-top: 30px; }
 #btnWrap button {width: 100%; font-size: 16px;}
@@ -48,6 +50,8 @@ body.no-scroll {overflow: hidden}
 [data-radius="bottom"]{border-radius: 0 0 3px 3px}
 [data-radius="all"] {border-radius: 3px}
 .input-wrap {margin-bottom: 20px;}
+#loader2 {position: absolute; margin: auto; left: 0; right: 0;}
+#loader2.hide {display: none;}
 .more {transition: all 1s 0s cubic-bezier(.4,0,.2,1);  opacity: 0; pointer-events: none; z-index: 0!important;}
 .gsMore {margin-top: -130px;}
 .twoMore {margin-top: -44px}

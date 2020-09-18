@@ -25,17 +25,20 @@ const data = {
 }
 
 function genInputs() {
-		const target = el('#inputs')
-		target.innerHTML = ''
-		fetch(`./dist/files/${data.signature + 'Input'}.html`)
-			.then(res => res.text())
-			.then(res => {
-				target.insertAdjacentHTML('beforeend', res)
-			})
-			.catch(e => {
-				alert('Oops! An error occured. Please try again.\r\n' + e)
-				window.location.reload()
-			})
+	const loader = el('#loader2')
+	loader.classList.contains('hide') ? loader.classList.remove('hide') : ''
+	const target = el('#inputs')
+	target.innerHTML = ''
+	fetch(`./dist/files/${data.signature + 'Input'}.html`)
+		.then(res => res.text())
+		.then(res => {
+			loader.classList.add('hide')
+			target.insertAdjacentHTML('beforeend', res)
+		})
+		.catch(e => {
+			alert('Oops! An error occured. Please try again.\r\n' + e)
+			window.location.reload()
+		})
 }
 
 function checkIfSalesforce(el) {
@@ -89,7 +92,7 @@ function togglePop() {
 	const pop = el('#popWrap')
 	utils.toggleClass(pop, 'show')
 	utils.toggleClass(el('body'), 'no-scroll')
-	el('#cancel').innerText = 'Cancel'
+	pop.classList.contains('show') ? el('#cancel').innerText = 'Cancel' : ''
 }
 
 function injectDeets() {
@@ -104,7 +107,7 @@ function injectDeets() {
 		if (data.signature === 'two') {
 			data[data.signature].info[other[0].split('-')[0]] = data[data.signature].info.custom[other[0]]	
 		} else if (data.signature === 'gs') {
-			data[data.signature].info[other[0].split('-')[0]] = `<b>ZA:</b> ${data[data.signature].info.custom[other[0]]} | <b>ZA:</b> ${data[data.signature].info.custom[other[0]]} | <b>ZA:</b> ${data[data.signature].info.custom[other[0]]}`
+			data[data.signature].info[other[0].split('-')[0]] = `<b>ZA:</b> ${data[data.signature].info.custom[other[0]]} | <b>UK:</b> ${data[data.signature].info.custom[other[1]]} | <b>US:</b> ${data[data.signature].info.custom[other[2]]}`
 		} else if (data.signature === 'tri') {
 			
 		}
@@ -136,6 +139,8 @@ function genCode() {
 }
 
 function genSignature() {
+	const loader = el('#loader')
+	loader.classList.contains('hide') ? loader.classList.remove('hide') : ''
 	const target = el('#popContent')
 	let signature;
 	if (data[data.signature].change && data[data.signature].sf) {
@@ -152,6 +157,7 @@ function genSignature() {
 	fetch(`./dist/files/${signature}Sig.html`)
 		.then(res => res.text())
 		.then(res => {
+			loader.classList.add('hide')
 			target.insertAdjacentHTML('beforeend', res)
 			injectDeets()
 			data[data.signature].sf ? genCode() : ''
