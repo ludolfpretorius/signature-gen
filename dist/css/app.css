@@ -2,6 +2,7 @@
 * {font-family: 'Montserrat','Arial',sans-serif; outline: none;}
 html {scroll-behavior: smooth;}
 body {padding: 60px; position: relative;}
+body.no-scroll {overflow: hidden}
 .btn {padding: 12px 22px; border: none; background-color: #1576d4; color: #fff; border-radius: 3px; margin: 0; cursor: pointer; cursor: pointer; outline: none; margin-top: 5px; display: block; text-decoration: none; text-align: center; font-size: 16px;}
 .btn2 {padding: 12px 22px; border: none; background-color: #1576d4; color: #fff; border-radius: 3px; margin: 0; cursor: pointer; cursor: pointer; outline: none; margin-top: 10px; display: inline-block; text-decoration: none; text-align: center}
 .two-color {background-color: #1576d4!important}
@@ -10,19 +11,21 @@ body {padding: 60px; position: relative;}
 
 
 /* Popup */
-#popWrap {position: fixed; height: 100vh; width: 100vw; left: 0; top: 0; transition: all 0.4s ease; opacity: 0; pointer-events: none}
+#popWrap {position: absolute; min-height: 100vh; width: 100vw; left: 0; top: 0; transition: all 0.4s ease; opacity: 0; pointer-events: none; overflow: scroll}
 #popWrap:before {content: ''; background-color: rgba(0,0,0,0.7); width: 100%; height: 100%; position: fixed; left: 0; top: 0; z-index: 0; transition: all 0.4s ease}
-#pop {background-color: #fff; width: calc(600px - 120px); padding: 50px 60px; z-index: 1; position: fixed; margin: auto; top: 120px; left: 0; right: 0; border-radius: 4px; overflow: hidden; transition: all 0.4s ease; display: flex; justify-content: center; align-items: center; flex-direction: column;}
-#popContent {min-height: 330px;}
-#popContent code {color: #ccc; background-color: #20262e; font-size: 12px; padding: 20px; margin-top: 30px; border-radius: 3px; width: calc(100% - 40px); display: inline-block;}
-#btnWrap {display: flex; justify-content: center; flex-direction: column; width: 100%; margin-top: 30px; }
-#btnWrap button {width: 100%; font-size: 16px;}
-#btnWrap button#copySig {background-color: #1576d4; color: #fff; margin-bottom: 3px}
-#btnWrap button#cancel {background-color: #eee; color: #999;}
-
 #popWrap.show {opacity: 1; pointer-events: all}
 #popWrap.show #pop {transform: translateY(-40px); opacity: 1; pointer-events: all;}
 #popWrap.show:before {opacity: 1; pointer-events: all;}
+#pop {background-color: #fff; width: calc(600px - 120px); padding: 50px 60px 60px; z-index: 1; position: absolute; margin: auto auto 40px; top: 100px; left: 0; right: 0; border-radius: 4px; overflow: hidden; transition: all 0.4s ease; display: flex; justify-content: center; align-items: center; flex-direction: column; overflow: scroll;}
+#popContent {min-height: 330px; max-width: 480px; overflow: hidden}
+#popContent code {color: #ccc; background-color: #20262e; font-size: 12px; padding: 20px; margin-top: 30px; border-radius: 3px; width: calc(100% - 40px); max-width: 500px; display: inline-block;}
+#popContent code + p {text-align: center; margin-bottom: 0}
+#btnWrap {display: flex; justify-content: center; flex-direction: column; width: 100%; margin-top: 30px; }
+#btnWrap button {width: 100%; font-size: 16px;}
+#btnWrap button#copySig {background-color: #1576d4; color: #fff; margin-bottom: 3px; transition: all 0.4s ease}
+#btnWrap button#copySig.copied {background-color: #2fdb9f;}
+#btnWrap button#cancel {background-color: #eee; color: #777;}
+
 
 /* Nav */
 #nav {text-align: center; margin-bottom: 100px; display: flex; justify-content: center;}
@@ -37,17 +40,21 @@ body {padding: 60px; position: relative;}
 #pdfBtn img.pdf-icon {height: 40px; width: auto;}
 #pdfBtn p {margin: 0 0 0 4px; font-size: 12px; text-decoration: none;}
 
-#content {width: 400px; margin: auto; left: 0; right: 0;}
-#content > div {margin-bottom: 80px;}
-#code {display: none;}
-
 
 /* Inputs */
+#content {width: 400px; margin: auto; left: 0; right: 0;}
+#content > div {margin-bottom: 80px;}
+[data-radius="top"] {border-radius: 3px 3px 0 0}
+[data-radius="bottom"]{border-radius: 0 0 3px 3px}
+[data-radius="all"] {border-radius: 3px}
 .input-wrap {margin-bottom: 20px;}
 .more {transition: all 1s 0s cubic-bezier(.4,0,.2,1);  opacity: 0; pointer-events: none; z-index: 0!important;}
 .gsMore {margin-top: -130px;}
 .twoMore {margin-top: -44px}
 .more.show {opacity: 1; pointer-events: all;}
+#sf {text-align: center; border: 1px solid #dbdbdb; padding: 10px 14px; border-radius: 3px;  cursor: pointer; color: #808080; font-family: sans-serif; font-size: 15px; -webkit-box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.06); box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.06);}
+#sf:hover {border: 2px solid #dbdbdb; padding: 9px 14px; margin-bottom: 20px;}
+#sf.sf-active {background-color: #2fdb9f; color: #fff; border: 2px solid #2fdb9f; padding: 9px 14px;}
 .create-sig-btn {background-color: #2fdb9f; transition: all 1s 0s cubic-bezier(.4,0,.2,1);}
 hr {border: none; height: 1px; margin: 7px 0; opacity: 0}
 
