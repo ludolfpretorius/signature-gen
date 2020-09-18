@@ -4,7 +4,8 @@
     <input type="text" class="info" id="name" placeholder="Name">
     <input type="text" class="info" id="surname" placeholder="Surname">
     <input type="text" class="info" id="title" placeholder="Job Title (Title Case)">
-    <input type="text" class="info" id="pronoun" placeholder="Pronoun (optional)">
+    <input type="text" class="info change" id="pronoun" placeholder="Pronoun (optional)" data-sig="twoPronoun">
+    <hr>
     <select class="info" id="address">
         <option value="" disabled="disabled" selected="selected">Select address</option>
         <option value="1521 N. Danville Street, Arlington, VA 22201">Arlington (2U)</option>
@@ -22,13 +23,17 @@
         <option value="155 Gordon Baker Road, Suite #202, North York, ON M2H 3N5">Canada (Trilogy)</option>
         <option value="505 Howard street, 4th floor, San Francisco, CA, 94105">San Francisco (Trilogy)</option>
         <option value="Deneb House, 368 Browning Rd, Woodstock, Cape Town, 7925">Cape Town (GetSmarter)</option>
-        <option value="Working remotely">Remote (Specify)</option>
+        <option value="custom">Remote (Specify)</option>
     </select>
-    <input type="text" class="info" id="remote" placeholder="City, State Abbr.">
-    <div class="form-group">
-        <input type="text" class="info" id="office" placeholder="Office number (2U/GS)">
-        <input type="text" class="info" id="cell" placeholder="Cell number (optional)">
+    <div class="form-group more twoMore">
+        <input type="text" class="info custom" id="address-remote" placeholder="City, State Abbr.">
     </div>
+    <hr>
+    <div class="form-group">
+        <input type="text" class="info" id="office" placeholder="Office number">
+        <input type="text" class="info optional" id="cell" placeholder="Cell number (optional)">
+    </div>
+    <hr>
     <div class="sf">Make it Salesforce compatible</div>
 </div>
 <a class="btn two-color create-sig-btn" href="javascript:;" data-content="twoSig">Create Signature</a>

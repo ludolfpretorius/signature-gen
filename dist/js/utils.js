@@ -23,4 +23,23 @@ function toggleClass(element, theClass, eventTarget) {
 	}
 }
 
-export {copyEl, toggleClass}
+function show(el) {
+	el.style.display = 'block'
+	setTimeout(() => {
+		el.classList.add('show')
+		el.style.marginTop = 0
+	}, 0)
+}
+
+function hide(el) {
+	const height = el.getBoundingClientRect().height //el.offsetHeight
+	el.classList.remove('show')
+	el.style.marginTop = '-' + height + 'px'
+	setTimeout(() => {
+		el.style.display = 'none'
+		el.querySelectorAll('input').forEach(a => a.value = '')
+	}, 1000)
+}
+
+
+export {copyEl, toggleClass, show, hide}

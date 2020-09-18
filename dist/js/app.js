@@ -1,49 +1,57 @@
 import * as utils from './utils.js'
 
 const html = el('html')
+const content = el('#content')
 const data = {
 	signature: 'two',
 	two: {
-		//pronounPreview: `<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800" rel="stylesheet"><table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="background-color: #fff; font-family: 'Montserrat', 'Arial', sans-serif;"> <tr> <td width="470"> <table align="left" border="0" cellspacing="0" cellpadding="0" style="background-color: #fff; font-family: 'Montserrat', 'Arial', sans-serif; display: block;" width="100%"> <tr> <td width="470" height="50" valign="" style="border-bottom: 1px solid #eee;" colspan="2"> <img src="https://bit.ly/2AeJ6qA" alt="2u" border="0" width="43" height="38"> </td></tr><tr> <td width="470" height="120" valign="" style="border-bottom: 5px solid #1475d4;" colspan="2"> <p style="color: #1475d4; margin: 0; line-height: 18px; font-size: 12px;"><span style="font-weight: 700;">${name.value} ${surname.value}</span> | ${pronoun.value}<br>${title.value}<br></p><p style="margin: 0; line-height: 18px; font-size: 12px; color: #000!important">${remote.value.length ? remote.value : address.value}<br><span style="color: #000!important">${office.value.length ? '<b>Office: </b>' + office.value + ' ' : ''}${phone.value.length ? '<b>Phone: </b>' + phone.value + ' ' : ''}${office.value.length && cell.value.length || phone.value.length && cell.value.length ? '| <b>Cell: </b>' + cell.value + ' ' : ''}${!office.value.length && !phone.value.length && cell.value.length ? '<b>Cell: </b>' + cell.value : ''}<br><span style="font-weight: 700; color: #000!important"><a href="https://2u.com" target="_blank" style="text-decoration: none!important; color: #000!important;">www.2u.com</a> | #NOBACKROW</span></p></td></tr><tr> <td width="70" height="70" valign="top"> <img src="https://bit.ly/2yNprfI" border="0" width="52px" height="79.23"> </td><td width="400" height="50" valign="" style="border-bottom: 1px solid #eee;"> <p style="margin: 0; line-height: 18px; font-size: 12px; color: #000!important">We&#8217;re a purpose-driven business looking for talented people who care about what they do. Join us at <span style="font-weight: 700"><a href="https://2u.com/careers/" target="_blank" style="text-decoration: none!important; color: #000!important;">2u.com/careers/</a></span>.</p></td></tr><tr> <td width="470" height="120" valign="top" style="padding-top: 20px" colspan="2"> <p style="margin: 0; line-height: 12px; font-size: 9px; color: #000!important">This message contains confidential information and is intended only for the individual named. If you are not the named addressee you should not disseminate, distribute or copy this e-mail. Please notify the sender immediately by e-mail if you have received this e-mail by mistake and delete this e-mail from your system.</p></td></tr></table> </td></tr></table>`,
 		btn: el('#twoBtn'),
 		sf: false,
-		info: {
-			name: '',
-			surname: '',
-			title: '',
-			address: '',
-			office: '',
-			cell: '',
-			// pronoun: '',
-			// remote: '',
-		}
+		info: {}
 	},
 	gs: {
 		btn: el('#gsBtn'),
 		sf: true,
-		info: {
-			name: '',
-			surname: '',
-			title: '',
-		}
+		info: {}
 	},
 	tri: {
 		btn: el('#triBtn'),
 		sf: false,
-		info: {
-			name: '',
-			surname: '',
-			title: '',
-			office: ''
-		}
+		info: {}
 	},
 	pdf: {
 		btn: el('#pdfBtn'),
 		link: 'https://2universe.2u.com/brandportal/email_signature/email_signature_toolkitpdf',
 	}
 }
+
+function checkIfCustom() {
+	const more = el('.input-wrap .more', el('#inputs'))
+	const els = [...el('.input-wrap').children]
+	const custom = els.filter(a => a.value === 'custom')
+	custom.length ? data[data.signature].customInput = true : data[data.signature].customInput = false
+	data[data.signature].customInput ? utils.show(more) : utils.hide(more)
+}
+
 function storeValue(input) {
-	data[data.signature].info[input.id] = input.value
+	checkIfCustom()
+	if (input.classList.contains('custom')) {
+		data[data.signature].info.custom = data[data.signature].info.custom ? data[data.signature].info.custom : {}
+		data[data.signature].info.custom[input.id] = input.value
+	} else {
+		data[data.signature].info[input.id] = input.value
+	}
+	if (input.classList.contains('change') && input.value.length) {
+		data[data.signature].change = input.getAttribute('data-sig')
+	} else {
+		delete data[data.signature].change
+	}
+	const optionals = document.querySelectorAll('.optional')
+	optionals.forEach(a => {
+		if (optionals.length && a.value === '') {
+			data[data.signature].info[a.id] = ''
+		}
+	})
 }
 
 function togglePop() {
@@ -53,12 +61,34 @@ function togglePop() {
 
 function injectDeets() {
 	const sig = el('#popContent table')
-	const entries = Object.keys(data[data.signature].info)
 	const copyBtn = el('#copySig')
+	const optional = document.querySelectorAll('.optional')
 	data[data.signature].sf ? copyBtn.innerText = 'Copy HTML' : copyBtn.innerText = 'Copy signature'
+	if (data[data.signature].info.custom) {
+		let main;
+		const other = [];
+		Object.keys(data[data.signature].info.custom).map(a => other.push(a))
+		if (data.signature === 'two') {
+			data[data.signature].info[other[0].split('-')[0]] = data[data.signature].info.custom[other[0]]	
+		} else if (data.signature === 'gs') {
+			data[data.signature].info[other[0].split('-')[0]] = `<b>ZA:</b> ${data[data.signature].info.custom[other[0]]} | <b>ZA:</b> ${data[data.signature].info.custom[other[0]]} | <b>ZA:</b> ${data[data.signature].info.custom[other[0]]}`
+		} else if (data.signature === 'tri') {
+			
+		}
+		delete data[data.signature].info.custom
+	}
+	const entries = Object.keys(data[data.signature].info)
 	entries.map(a => {
-		el(`#${a}Show`) ? el(`#${a}Show`).innerText = data[data.signature].info[a] : ''
+		if (!data[data.signature].info[a].length) {
+			el(`#${a}Pipe`) ? el(`#${a}Pipe`).remove() : ''
+			el(`#${a}Title`) ? el(`#${a}Title`).remove() : ''
+			el(`#${a}Show`) ? el(`#${a}Show`).remove() : ''
+		}
+		if (el(`#${a}Show`)) {
+			el(`#${a}Show`).innerHTML = data[data.signature].info[a]
+		}
 	})
+	console.log(data[data.signature])
 }
 
 function genCode() {
@@ -71,9 +101,10 @@ function genCode() {
 
 function genSignature() {
 	const target = el('#popContent')
+	const signature = data[data.signature].change ? data[data.signature].change : data.signature
 	target.innerHTML = ''
 	togglePop()
-	fetch(`./dist/files/${data.signature + 'Sig'}.html`)
+	fetch(`./dist/files/${signature}Sig.html`)
 		.then(res => res.text())
 		.then(res => {
 			target.insertAdjacentHTML('beforeend', res)
@@ -82,7 +113,7 @@ function genSignature() {
 		})
 		.catch(e => {
 			alert('Oops! An error occured. Please try again.\r\n' + e)
-			//window.location.reload()
+			// window.location.reload()
 		})
 }
 
@@ -91,7 +122,9 @@ function genInputs() {
 		target.innerHTML = ''
 		fetch(`./dist/files/${data.signature + 'Input'}.html`)
 			.then(res => res.text())
-			.then(res => target.insertAdjacentHTML('beforeend', res))
+			.then(res => {
+				target.insertAdjacentHTML('beforeend', res)
+			})
 			.catch(e => {
 				alert('Oops! An error occured. Please try again.\r\n' + e)
 				window.location.reload()
@@ -100,13 +133,11 @@ function genInputs() {
 html.addEventListener('click', (event) => {
 	const elem = event.target
 	const popContent = el('#popContent')
-
 	if (elem.classList.contains('nav-btn')) {
 		utils.toggleClass(el('.nav-btn'), 'selected', elem)
 		data.signature = elem.getAttribute('data-sig')
 		genInputs()
 	}
-
 	event.target === el('.create-sig-btn') ? genSignature() : ''
 	if (elem === el('#copySig')) {
 		data[data.signature].sf ? utils.copyEl(el('code', popContent)) : utils.copyEl(popContent)
@@ -116,7 +147,6 @@ html.addEventListener('click', (event) => {
 })
 data.two.btn.click()
 
-const content = el('#content')
 content.addEventListener('change', (event) => {
 	const elem = event.target
 	elem.classList.contains('info') ? storeValue(elem) : ''
@@ -133,6 +163,7 @@ content.addEventListener('change', (event) => {
 
 
 
+//Pronoun preview --> `<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800" rel="stylesheet"><table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="background-color: #fff; font-family: 'Montserrat', 'Arial', sans-serif;"> <tr> <td width="470"> <table align="left" border="0" cellspacing="0" cellpadding="0" style="background-color: #fff; font-family: 'Montserrat', 'Arial', sans-serif; display: block;" width="100%"> <tr> <td width="470" height="50" valign="" style="border-bottom: 1px solid #eee;" colspan="2"> <img src="https://bit.ly/2AeJ6qA" alt="2u" border="0" width="43" height="38"> </td></tr><tr> <td width="470" height="120" valign="" style="border-bottom: 5px solid #1475d4;" colspan="2"> <p style="color: #1475d4; margin: 0; line-height: 18px; font-size: 12px;"><span style="font-weight: 700;">${name.value} ${surname.value}</span> | ${pronoun.value}<br>${title.value}<br></p><p style="margin: 0; line-height: 18px; font-size: 12px; color: #000!important">${remote.value.length ? remote.value : address.value}<br><span style="color: #000!important">${office.value.length ? '<b>Office: </b>' + office.value + ' ' : ''}${phone.value.length ? '<b>Phone: </b>' + phone.value + ' ' : ''}${office.value.length && cell.value.length || phone.value.length && cell.value.length ? '| <b>Cell: </b>' + cell.value + ' ' : ''}${!office.value.length && !phone.value.length && cell.value.length ? '<b>Cell: </b>' + cell.value : ''}<br><span style="font-weight: 700; color: #000!important"><a href="https://2u.com" target="_blank" style="text-decoration: none!important; color: #000!important;">www.2u.com</a> | #NOBACKROW</span></p></td></tr><tr> <td width="70" height="70" valign="top"> <img src="https://bit.ly/2yNprfI" border="0" width="52px" height="79.23"> </td><td width="400" height="50" valign="" style="border-bottom: 1px solid #eee;"> <p style="margin: 0; line-height: 18px; font-size: 12px; color: #000!important">We&#8217;re a purpose-driven business looking for talented people who care about what they do. Join us at <span style="font-weight: 700"><a href="https://2u.com/careers/" target="_blank" style="text-decoration: none!important; color: #000!important;">2u.com/careers/</a></span>.</p></td></tr><tr> <td width="470" height="120" valign="top" style="padding-top: 20px" colspan="2"> <p style="margin: 0; line-height: 12px; font-size: 9px; color: #000!important">This message contains confidential information and is intended only for the individual named. If you are not the named addressee you should not disseminate, distribute or copy this e-mail. Please notify the sender immediately by e-mail if you have received this e-mail by mistake and delete this e-mail from your system.</p></td></tr></table> </td></tr></table>`
 
 // function genContent(event) {
 // 	if (event.target.nodeName === 'BUTTON') {
