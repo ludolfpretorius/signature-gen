@@ -11,13 +11,7 @@
 
    <div id="popWrap">
         <div id="pop">
-            <svg id="loader" xmlns="http://www.w3.org/2000/svg" width="119px" height="119px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" style="background: none;">
-                <circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke="{{config.base}}" ng-attr-stroke-width="{{config.width}}" fill="none" r="30" stroke="#ffffff" stroke-width="10"></circle>
-                <circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke="{{config.stroke}}" ng-attr-stroke-width="{{config.innerWidth}}" ng-attr-stroke-linecap="{{config.linecap}}" fill="none" r="30" stroke="#dddddd" stroke-width="10" stroke-linecap="square" transform="rotate(156.245 50 50)">
-                  <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;180 50 50;720 50 50" keyTimes="0;0.5;1" dur="1.4s" begin="0s" repeatCount="indefinite"></animateTransform>
-                  <animate attributeName="stroke-dasharray" calcMode="linear" values="18.84955592153876 169.64600329384882;94.2477796076938 94.24777960769377;18.84955592153876 169.64600329384882" keyTimes="0;0.5;1" dur="1.4" begin="0s" repeatCount="indefinite"></animate>
-                </circle>
-            </svg>
+            <img src="./dist/img/loader.svg" id="loader">
             <div id="popContent"></div>
             <div id="btnWrap">
                 <button class="btn2" id="copySig">Copy signature</button>
@@ -27,13 +21,13 @@
    </div>
 
     <div id="nav">
-        <button class="nav-btn" id="twoBtn" data-content="twoInput" data-sig="two">
+        <button class="nav-btn tab" id="twoBtn" data-content="twoInput" data-sig="two">
             <img src="https://bit.ly/2AeJ6qA">
         </button>
-        <button class="nav-btn" id="gsBtn" data-content="gsInput" data-sig="gs">
+        <button class="nav-btn tab" id="gsBtn" data-content="gsInput" data-sig="gs">
             <img src="https://bit.ly/2PHr3Pn">
         </button>
-        <button class="nav-btn" id="triBtn" data-content="triInput" data-sig="tri">
+        <button class="nav-btn tab" id="triBtn" data-content="triInput" data-sig="tri">
             <img src="http://bit.ly/2KPKcx8">
         </button>
         <button class="nav-btn" id="pdfBtn" title="PDF Guide" data-sig="two">
@@ -43,13 +37,7 @@
     </div>
    
     <div id="content">
-        <svg id="loader2" xmlns="http://www.w3.org/2000/svg" width="119px" height="119px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" style="background: none;">
-            <circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke="{{config.base}}" ng-attr-stroke-width="{{config.width}}" fill="none" r="30" stroke="#ffffff" stroke-width="10"></circle>
-            <circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke="{{config.stroke}}" ng-attr-stroke-width="{{config.innerWidth}}" ng-attr-stroke-linecap="{{config.linecap}}" fill="none" r="30" stroke="#dddddd" stroke-width="10" stroke-linecap="square" transform="rotate(156.245 50 50)">
-              <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;180 50 50;720 50 50" keyTimes="0;0.5;1" dur="1.4s" begin="0s" repeatCount="indefinite"></animateTransform>
-              <animate attributeName="stroke-dasharray" calcMode="linear" values="18.84955592153876 169.64600329384882;94.2477796076938 94.24777960769377;18.84955592153876 169.64600329384882" keyTimes="0;0.5;1" dur="1.4" begin="0s" repeatCount="indefinite"></animate>
-            </circle>
-        </svg>
+        <img src="./dist/img/loader.svg" id="loader2">
         <div id="inputs"></div>
         <div id="preview"></div>
         <!-- <div id="code">

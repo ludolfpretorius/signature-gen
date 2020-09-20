@@ -17,10 +17,6 @@ const data = {
 		btn: el('#triBtn'),
 		sf: false,
 		info: {}
-	},
-	pdf: {
-		btn: el('#pdfBtn'),
-		link: 'https://2universe.2u.com/brandportal/email_signature/email_signature_toolkitpdf',
 	}
 }
 
@@ -134,7 +130,7 @@ function genCode() {
 	code.innerText = minHtml
 	target.appendChild(code)
 	const p = document.createElement('p')
-	p.innerHTML = minHtml.length < 1333 ? minHtml.length + ' Characters 👍' : '⚠️ ' + minHtml.length + ' Characters - SF has a limit of 1333 &nbsp;⚠️'
+	p.innerHTML = minHtml.length < 1333 ? minHtml.length + ' Characters 👍' : '⚠️ ' + minHtml.length + ' Characters - SF has a limit of 1333 &nbsp;⚠️' + '<br><a href="#" style="font-size:12px" onclick="alert(`Try removing some of the optional details.\r\nOtherwise, shorten the current details.`)">What should I do?</a>'
 	target.appendChild(p)
 }
 
@@ -176,6 +172,7 @@ function letUserKnowAboutCopy(elem) {
 	setTimeout(() => {
 		utils.toggleClass(elem, 'copied')
 		elem.innerHTML = currentText
+		clearTimeout()
 	}, 3000)
 }
 
@@ -183,12 +180,13 @@ const html = el('html')
 html.addEventListener('click', (event) => {
 	const elem = event.target
 	const popContent = el('#popContent')
-	if (elem.classList.contains('nav-btn')) {
-		utils.toggleClass(el('.nav-btn'), 'selected', elem)
+	if (elem.classList.contains('tab')) {
+		utils.toggleClass(el('.tab'), 'selected', elem)
 		data.signature = elem.getAttribute('data-sig')
 		genInputs()
 	}
-	event.target === el('.create-sig-btn') ? genSignature() : ''
+	elem === el('#pdfBtn') ? window.open('https://2universe.2u.com/brandportal/email_signature/email_signature_toolkitpdf', '_blank') : ''
+	elem === el('.create-sig-btn') ? genSignature() : ''
 	if (elem === el('#copySig')) {
 		data[data.signature].sf ? utils.copyEl(el('code', popContent)) : utils.copyEl(popContent)
 		letUserKnowAboutCopy(elem)

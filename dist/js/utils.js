@@ -27,7 +27,7 @@ function show(el) {
 	el.style.display = 'block'
 	setTimeout(() => {
 		el.classList.add('show')
-		el.style.marginTop = 0
+		el.style.marginTop = '0px'
 	}, 0)
 }
 
