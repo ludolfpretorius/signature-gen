@@ -1,8 +1,8 @@
 /* General */
 * {font-family: 'Montserrat','Arial',sans-serif; outline: none;}
-html {scroll-behavior: smooth;}
+html {overflow-x: hidden; overflow-y: auto;}
 body {padding: 60px; position: relative;}
-body.no-scroll {overflow: hidden}
+/*body.no-scroll {overflow: hidden}*/
 .btn {padding: 12px 22px; border: none; background-color: #1576d4; color: #fff; border-radius: 3px; margin: 0; cursor: pointer; cursor: pointer; outline: none; margin-top: 5px; display: block; text-decoration: none; text-align: center; font-size: 16px;}
 .btn2 {padding: 12px 22px; border: none; background-color: #1576d4; color: #fff; border-radius: 3px; margin: 0; cursor: pointer; cursor: pointer; outline: none; margin-top: 10px; display: inline-block; text-decoration: none; text-align: center}
 .two-color {background-color: #1576d4!important}
@@ -11,15 +11,15 @@ body.no-scroll {overflow: hidden}
 
 
 /* Popup */
-#popWrap {position: absolute; min-height: 100vh; width: 100vw; left: 0; top: 0; transition: all 0.4s ease; opacity: 0; pointer-events: none; overflow-y: scroll}
+#popWrap {position: absolute; min-height: 100vh; width: 100vw; left: 0; top: 0; transition: all 0.4s ease; opacity: 0; pointer-events: none; overflow-y: scroll; z-index: 1}
 #popWrap:before {content: ''; background-color: rgba(0,0,0,0.7); width: 100%; height: 100%; position: fixed; left: 0; top: 0; z-index: 0; transition: all 0.4s ease}
 #popWrap.show {opacity: 1; pointer-events: all}
 #popWrap.show #pop {transform: translateY(-40px); opacity: 1; pointer-events: all;}
 #popWrap.show:before {opacity: 1; pointer-events: all;}
 #pop {background-color: #fff; width: calc(600px - 120px); padding: 50px 60px 60px; z-index: 1; position: absolute; margin: auto auto 40px; top: 100px; left: 0; right: 0; border-radius: 4px; overflow: hidden; transition: all 0.4s ease; display: flex; justify-content: center; align-items: center; flex-direction: column;}
-#pop #loader {position: absolute; top: 150px;}
+#pop #loader {position: absolute; top: 110px;}
 #pop #loader.hide {display: none}
-#popContent {min-height: 330px; max-width: 480px; overflow: hidden}
+#popContent {min-height: 250px; max-width: 480px; overflow: hidden}
 #popContent code {color: #ccc; background-color: #20262e; font-size: 12px; padding: 20px; margin-top: 30px; border-radius: 3px; width: calc(100% - 40px); display: inline-block;}
 #popContent code + p {text-align: center; margin-bottom: 0}
 #btnWrap {display: flex; justify-content: center; flex-direction: column; width: 100%; margin-top: 30px; }
@@ -30,7 +30,7 @@ body.no-scroll {overflow: hidden}
 
 
 /* Nav */
-#nav {text-align: center; margin-bottom: 100px; display: flex; justify-content: center;}
+#nav {text-align: center; margin-bottom: 60px; display: flex; justify-content: center;}
 .nav-btn {background-color: #fff; border: 1px solid #dbdbdb; -webkit-border-radius: 5px; border-radius: 5px; outline: none!important; padding: 12px 12px 8px; width: 140px; display: -webkit-inline-box; display: -webkit-inline-flex; display: -ms-inline-flexbox; display: inline-flex; -webkit-box-pack: center; -webkit-justify-content: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; cursor: pointer; margin: 0 5px;}
 .nav-btn:hover {border: 2px solid #ccc}	
 .nav-btn img {height: 40px; width: auto; pointer-events: none;}
