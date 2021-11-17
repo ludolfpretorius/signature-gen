@@ -1,4 +1,4 @@
-import {copyElem, toggleClass, show, hide, data, genInputs, checkIfSalesforce, checkIfCustom, storeValue, togglePop, injectDeets, genCode, genSignature, letUserKnowAboutCopy } from './functions.js'
+import {copyElem, toggleClass, show, hide, data, genInputs, checkIfSalesforce, checkIfCustom, storeValue, togglePop, injectDeets, genCode, genSignature, letUserKnowAboutCopy } from './functionsU.js'
 
 // === VARS ===
 const html = document.querySelector('html')

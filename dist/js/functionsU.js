@@ -244,7 +244,7 @@ function genSignature() {
 	}
 	target.innerHTML = ''
 	togglePop()
-	fetch(`./dist/files/${signature}Sig.html`)
+	fetch(`./dist/files/${signature}SigU.html`)
 		.then(res => res.text())
 		.then(res => {
 			loader.classList.add('hide')
