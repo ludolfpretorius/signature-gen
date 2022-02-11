@@ -7,7 +7,7 @@ import toggleSalesforce from "./modules/toggleSalesforce.js"
 import validateUserDetails from './modules/validateUserDetails.js'
 import { mountSignature, mountCode } from "./modules/mountSignature.js"
 import updateSignatureDetails from "./modules/updateSignatureDetails.js"
-import { copyElem, notification } from "./modules/copyToClipboard.js"
+import { copyElem, initCopyNotification } from "./modules/copyToClipboard.js"
 import initApp from './modules/initApp.js'
 
 // State
@@ -21,31 +21,41 @@ document.addEventListener('click', (event) => {
 
 	// Tab Navigation (mounts input file with "mountInputs()" )
 	if (elem.classList.contains('tab')) {
-		switchTabs(elem, elem.getAttribute('data-brand'))
-		updateUser('signature', elem.getAttribute('data-brand'))
+		const brand = elem.getAttribute('data-brand')
+		switchTabs(elem, brand)
+		updateUser('signature', brand)
 	}
 
-	// // Gen Signature
+	// Make it Salesforce compatible
+	if (elem.id === 'salesforce-btn') {
+		toggleSalesforce(elem)
+	}
+
+	// Gen Signature
 	if (elem.id === 'create-signature') {
-		const isValid = validateUserDetails(getUser)
+		const isValid = true//validateUserDetails(getUser)
 		if (isValid) {
 			mountSignature(getUser.signature)
 			updateSignatureDetails(getUser)
-			togglePopup()
+			togglePopup('show')
 		}
 	}
 
-	// // Copy signature
-	// if (elem === document.querySelector('#copySig')) {
-	// 	data[data.signature].sf ? copyElem(document.querySelector('code', popContent)) : copyElem(popContent)
-	// 	letUserKnowAboutCopy(elem)
-	// }
+	// Copy signature
+	if (elem.id === 'copy-signature') {
+		let popupContent = document.querySelector('#popup-content')
+		if (getUser.salesforce) {
+			popupContent = popupContent.querySelector('code')
+		}
+		copyElem(popupContent)
+		initCopyNotification(elem)
+	}
 
-	// // Close Popup
-	// if (elem === document.querySelector('#cancel') || elem.id === 'popWrap') togglePop()
+	// Close Popup
+	if (elem.id === 'cancel-popup') {
+		togglePopup('hide')
+	}
 
-	// // Make it Salesforce compatible
-	// if (event.target.id === 'sf') toggleSalesforce(event.target)
 })
 
 initApp()

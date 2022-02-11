@@ -7,7 +7,7 @@ function copyElem(element) {
 	document.execCommand('copy')
 }
 
-function notification(element) {
+function initCopyNotification(element) {
 	const currentText = element.innerText
 	element.classList.add('copied')
 	element.innerHTML = '<span style="line-height:12px">📋</span> Copied to clipboard!'
@@ -20,5 +20,5 @@ function notification(element) {
 
 export {
 	copyElem,
-	notification
+	initCopyNotification
 }

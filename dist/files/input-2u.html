@@ -1,6 +1,6 @@
 <h3>Enter your details</h3>
 
-<div class="input-wrap">
+<div class="inputs-inner">
     <input type="text" class="data" name="name" placeholder="Name" data-radius="top">
     <input type="text" class="data" name="lastname" placeholder="Last name">
     <input type="text" class="data" name="title" placeholder="Job Title (Title Case)" data-radius="bottom">
@@ -25,14 +25,10 @@
         <option value="358 Victoria Road, Salt River, 7925">Cape Town</option>
         <option value="custom">Remote (specify)</option>
     </select>
-    <div class="form-group more input-2u">
-        <input type="text" class="data custom" name="addressRemote" placeholder="City, State Abbr.">
-    </div>
-    <div class="form-group">
-        <input type="text" class="data optional" name="office" placeholder="Office number (optional)" data-radius="bottom">
-    </div>
+    <input type="text" class="data custom-address" name="addressRemote" placeholder="City, State Abbr.">
+    <input type="text" class="data optional" name="office" placeholder="Office number (optional)" data-radius="bottom">
     <hr>
-    <div id="sf">Make it SalesForce compatible</div>
+    <div id="salesforce-btn">Make it SalesForce compatible</div>
 </div>
-<div class="btn" id="create-signature" href="javascript:;" data-content="twoSig">Create Signature</div>
+<div class="btn" id="create-signature">Create Signature</div>
 

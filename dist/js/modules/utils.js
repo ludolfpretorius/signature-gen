@@ -8,21 +8,29 @@ function toggleClass(element, className) {
 	element.classList.toggle(className)
 }	
 
-function toggleLoader() {
+function toggleLoader(showOrHideString) {
 	const loader = document.querySelector('#loader')
-	loader.classList.toggle('show')
+	const action = showOrHideString === 'show' ? 'add' : 'remove'
+	loader.classList[action]('show')
 }
 
-function togglePopup(element) {
+function togglePopup(showOrHideString) {
 	const popup = document.querySelector('#popup')
-	const popupLoader = popup.querySelector('#popup-loader')
-	popup.classList.toggle('show')
-	popupLoader.classList.toggle('hide')
-	document.body.classList.toggle('no-scroll')
+	const action = showOrHideString === 'show' ? 'add' : 'remove'
+	
+	popup.classList[action]('show')
+	document.body.classList[action]('no-scroll')
+}
+
+function togglePopupLoader(showOrHideString) {
+	const action = showOrHideString === 'show' ? 'add' : 'remove'
+	const popupLoader = popup.querySelector('#popup #popup-loader')
+	popupLoader.classList[action]('show')
 }
 
 export {
 	toggleClass,
 	toggleLoader,
-	togglePopup
+	togglePopup,
+	togglePopupLoader
 }

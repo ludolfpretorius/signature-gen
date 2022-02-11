@@ -10,31 +10,31 @@
 <body>
 
    <div id="popup">
-        <div id="pop">
-            <img src="./dist/img/loader.svg" id="popup-loader">
+        <div id="popup-inner">
+            <img id="popup-loader" class="show" src="./dist/img/loader.svg" />
             <div id="popup-content"></div>
-            <div id="btnWrap">
-                <button class="btn2" id="copySig">Copy signature</button>
-                <button class="btn2" id="cancel">Cancel</button>
+            <div id="popup-btns">
+                <div class="btn" id="copy-signature">Copy signature</div>
+                <div class="btn cancel" id="cancel-popup">Cancel</div>
             </div>
-       </div>
+        </div>
    </div>
 
     <div id="nav">
-        <a href="javascript:;" class="nav-btn tab btn-2u" data-brand="2u">
-            <img src="./dist/img/2.jpg">
-        </a>
-        <a href="javascript:;" class="nav-btn tab btn-gs" data-brand="gs">
-            <img src="./dist/img/g.jpg">
-        </a>
+        <div class="nav-btn tab" data-brand="2u">
+            <img src="./dist/img/2.jpg" />
+        </div>
+        <div class="nav-btn tab" data-brand="gs">
+            <img src="./dist/img/g.jpg" />
+        </div>
         <a href="https://2universe.2u.com/brandportal/email_signature/email_signature_toolkitpdf" target="_blank" class="nav-btn pdf" title="PDF Guide">
-            <img src="./dist/img/pdf.svg">
+            <img src="./dist/img/pdf.svg" />
             <p>PDF guide</p>
         </a>
     </div>
    
     <div id="content">
-        <img src="./dist/img/loader.svg" id="loader">
+        <img id="loader" class="show" src="./dist/img/loader.svg" />
         <div id="inputs"></div>
     </div>
 

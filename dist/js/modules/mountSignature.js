@@ -1,9 +1,14 @@
+import { togglePopupLoader } from './utils.js'
+
 function mountSignature(signature) {
+	const popupContentDiv = document.querySelector('#popup-content')
+	popupContentDiv.innerHTML = ''
+	togglePopupLoader('show')
 	fetch(`./dist/files/signature-${signature}.html`)
 		.then(resp => resp.text())
 		.then(data => {
-			const popupContentDiv = document.querySelector('#popup-content')
 			popupContentDiv.innerHTML = data
+			togglePopupLoader('hide')
 			// data[data.signature].sf ? genCode() : ''
 		})
 		.catch(e => {
