@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <title>Email Signature Generator</title>
 
-     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800"rel="stylesheet">
-    <link rel="stylesheet" href="./dist/css/appU.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800"rel="stylesheet">
+    <link rel="stylesheet" href="./dist/css/app.css">
 </head>
 <body>
 
-   <div id="popWrap">
+   <div id="popup">
         <div id="pop">
-            <img src="./dist/img/loader.svg" id="loader">
-            <div id="popContent"></div>
+            <img src="./dist/img/loader.svg" id="popup-loader">
+            <div id="popup-content"></div>
             <div id="btnWrap">
                 <button class="btn2" id="copySig">Copy signature</button>
                 <button class="btn2" id="cancel">Cancel</button>
@@ -21,27 +21,24 @@
    </div>
 
     <div id="nav">
-        <button class="nav-btn tab" id="twoBtn" data-content="twoInput" data-sig="two">
+        <a href="javascript:;" class="nav-btn tab btn-2u" data-brand="2u">
             <img src="./dist/img/2.jpg">
-        </button>
-        <button class="nav-btn tab" id="gsBtn" data-content="gsInput" data-sig="gs">
+        </a>
+        <a href="javascript:;" class="nav-btn tab btn-gs" data-brand="gs">
             <img src="./dist/img/g.jpg">
-        </button>
-        <button class="nav-btn" id="pdfBtn" title="PDF Guide" data-sig="two">
+        </a>
+        <a href="https://2universe.2u.com/brandportal/email_signature/email_signature_toolkitpdf" target="_blank" class="nav-btn pdf" title="PDF Guide">
             <img src="./dist/img/pdf.svg">
             <p>PDF guide</p>
-        </button>
+        </a>
     </div>
    
     <div id="content">
-        <img src="./dist/img/loader.svg" id="loader2">
+        <img src="./dist/img/loader.svg" id="loader">
         <div id="inputs"></div>
     </div>
-    
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
-    <!-- <script src="./dist/js/sanitizer.min.js"></script> -->
-    <script type="module" src="./dist/js/appU.js"></script>
 
+    <script type="module" src="./dist/js/index.js"></script>
 
 </body>
 </html>
