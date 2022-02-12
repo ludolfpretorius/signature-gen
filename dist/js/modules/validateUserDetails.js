@@ -4,7 +4,7 @@ function validateUserDetails(userObj) {
 			alert('Please complete the mandatory Name, Last name, Title, and Address fields.')
 			return false;
 		}
-		if (userObj.namecoach?.includes('name-coach.com')) {
+		if (userObj.namecoach && !userObj.namecoach.includes('name-coach.com')) {
 			alert('Please use an actual NameCoach link.')
 			return false;
 		}
