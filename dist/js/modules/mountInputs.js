@@ -1,11 +1,14 @@
 import { toggleLoader } from './utils.js'
-import { resetUser } from '../state/user.js'
+import { updateUser, resetUser } from '../state/user.js'
 
 function mountInputs(brand) {
 	const inputWrap = document.querySelector('#inputs')
 	inputWrap.innerHTML = ''
 	toggleLoader('show')
 	resetUser()
+	if (brand === 'gs') {
+		updateUser('salesforce', true)
+	}
 	fetch(`./dist/files/input-${brand}.html`)
 		.then(resp => resp.text())
 		.then(data => {

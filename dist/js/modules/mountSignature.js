@@ -6,7 +6,7 @@ function mountSignature(signature) {
 	const popupContentDiv = document.querySelector('#popup-content')
 	popupContentDiv.innerHTML = ''
 	togglePopupLoader('show')
-	if (getUser.salesforce || getUser.signature === 'gs') {
+	if (getUser.salesforce) {
 		signature += '-sf'
 	}
 	fetch(`./dist/files/signature-${signature}.html`)

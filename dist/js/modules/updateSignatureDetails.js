@@ -33,7 +33,6 @@ function updateSignatureDetails2U(userObj) {
 	} else {
 		namecoachNode.remove()
 	}
-
 }
 
 
