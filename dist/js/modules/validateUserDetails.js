@@ -9,7 +9,12 @@ function validateUserDetails(userObj) {
 			return false;
 		}
 	}
-	
+	if (userObj.signature === 'gs') {
+		if (!userObj.name || !userObj.lastname || !userObj.title) {
+			alert('Please complete the mandatory Name, Surname, and Title fields.')
+			return false;
+		}
+	}
 	return true
 }
 

@@ -53,11 +53,18 @@ a {
 		color: darken($greyDark, 10%);
 	}
 }
+.btn.gs {
+	background-color: $pink;
+	&:hover {
+		background-color: lighten($pink, 10%);
+	}
+}
 
 // Popup
 #popup {
 	width: 100vw;
 	min-height: 100vh;
+	padding: 10px 0;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -105,17 +112,28 @@ a {
 			}
 		}
 		#popup-content {
+			width: 470px;
 			min-height: 300px;
+		}
+		hr {
+			opacity: 0;
+			display: block;
+			pointer-events: none;
 		}
 		code {
 			width: 100%;
 			padding: 20px;
-			margin-top: 30px;
+			margin: 20px auto 0;
 			background-color: $black;
 			border-radius: 3px;
 			color: #ccc;
 			font-size: 12px;
-			overflow: hidden;
+			display: flex;
+			overflow-x: hidden;
+		}
+		p {
+			margin-bottom: 0;
+			text-align: center;
 		}
 		#popup-btns {
 			width: 100%;
@@ -178,6 +196,7 @@ a {
 	}
 }
 
+// Inputs title
 h3 {
 	text-align: center;
 }
@@ -220,14 +239,14 @@ h3 {
 				color: $black;
 				display: block;
 			}
-			input.custom-address {
+			select {
+				color: $greyDark;
+			}
+			#remote-address {
 				display: none;
 				&.show {
 					display: block;
 				}
-			}
-			select {
-				color: $greyDark;
 			}
 			#salesforce-btn {
 				padding: 10px 14px;

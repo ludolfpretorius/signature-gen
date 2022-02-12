@@ -1,25 +1,18 @@
 <h3>Enter your details</h3>
 
 <div class="inputs-inner">
-    <input type="text" class="info" id="name" placeholder="Name" data-radius="top">
-    <input type="text" class="info" id="surname" placeholder="Surname">
-    <input type="text" class="info" id="title" placeholder="Job Title (Title Case)" data-radius="bottom">
+    <input type="text" class="data" name="name" placeholder="Name" data-radius="top">
+    <input type="text" class="data" name="lastname" placeholder="Surname">
+    <input type="text" class="data" name="title" placeholder="Job Title (Title Case)" data-radius="bottom">
     <hr>
-    <select class="info" id="office" data-radius="all">
-        <option value="" disabled="disabled" selected="selected">Select office numbers</option>
-        <option value="<b>ZA:</b> +27 87 550 6966 | <b>UK:</b> +44 20 3823 6998 | <b>US:</b> +1 617-977-6889">Enrolments</option>
-        <option value="<b>ZA:</b> +27 21 830 9200 | <b>UK:</b> +44 20 3887 8107 | <b>US:</b> +1 339 215 1707">Global Success Team</option>
-        <option value="<b>ZA:</b> +27 21 447 7565 | <b>UK:</b> +44 20 3457 5774 | <b>US:</b> +1 224 249 3522">Finance, Certificates, Enterprise Sales & Academic Staff</option>
-        <option value="custom">Custom (specify)</option>
+    <select class="data" name="number" data-radius="all">
+        <option value="" disabled="disabled" selected="selected">Select team</option>
+        <option value="ZA: +27 87 550 6966 | UK: +44 20 3823 6998 | US: +1 617-977-6889">Enrolments</option>
+        <option value="ZA: +27 21 830 9200 | UK: +44 20 3887 8107 | US: +1 339 215 1707">Global Success Team</option>
+        <option value="ZA: +27 21 447 7565 | UK: +44 20 3457 5774 | US: +1 224 249 3522">Finance, Certificates, Enterprise Sales & Academic Staff</option>
 	</select>
-	<div class="form-group more gsMore">
-	    <input type="text" class="info custom" id="office-ZA" placeholder="ZA number" data-radius="top">
-	    <input type="text" class="info custom" id="office-UK" placeholder="UK number">
-	    <input type="text" class="info custom" id="office-US" placeholder="US number" data-radius="bottom">
-	</div>
 </div>
-
-<a class="btn gs-color create-sig-btn" href="javascript:;" data-content="gsSig">Create Signature</a>
+<div class="btn gs" id="create-signature">Create Signature</div>
 
 
 

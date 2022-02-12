@@ -1,4 +1,4 @@
-function copyElem(element) {
+function copyElement(element) {
 	const selection = window.getSelection()       
 	const range = document.createRange()
 	range.selectNodeContents(element)
@@ -19,6 +19,6 @@ function initCopyNotification(element) {
 }
 
 export {
-	copyElem,
+	copyElement,
 	initCopyNotification
 }
