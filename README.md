@@ -12,6 +12,7 @@ Email signature generator for 2U and GetSmarter email signatures.<br><br>
 ### File structure
 
 - `index.html`
+- `README.md` Basic documentation (The file that you are reading right now)
 - `dist/`
     - `files/` Input files and signature files for each type of signature (acts as components)
     - `img/` Images used in tool
@@ -28,7 +29,7 @@ Email signature generator for 2U and GetSmarter email signatures.<br><br>
 ##### Images
 
 - The images used in the tool **use absolute URLs** (`https://www.site.com/imges/img.jpg`) and not relative URLs (`./imges/img.jpg`). Otherwise, the images will not load outside of the tool. 
-- URLs for images in siganatures that cater for SalesForce (SF) use shortened URLs. This is important because SF has a character limit of 1333 characters in their email signatures. These include spaces, line-breaks and punctuation. If long URLs are used then the character limit will always be over the limit, which will render the signature unusable.
+- URLs for images in siganatures that cater for SalesForce (SF) use shortened URLs. This is important because SF has a character limit of 1333 characters in their email signatures. These include spaces, line-breaks and punctuation. If long URLs are used then the amount of characters will always be over the limit, which will render the signature unusable.
 
 
 ##### Components (HTML files)
