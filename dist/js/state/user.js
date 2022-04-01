@@ -4,8 +4,8 @@ function createUser() {
 		if (prop) {
 			user[prop] = val
 		}
-		if (!user[prop]) {
-			delete user[prop]
+		if (!user[prop]) { 
+			delete user[prop] // Setting a value to falsey removes the entry form the user object
 		}
 		return user
 	}

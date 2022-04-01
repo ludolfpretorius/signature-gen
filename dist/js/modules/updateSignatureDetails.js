@@ -42,13 +42,24 @@ function updateSignatureDetailsGS(userObj) {
 	const lastname = signature.querySelector('#lastname')
 	const title = signature.querySelector('#title')
 	const number = signature.querySelector('#number')
+	let customNumber = ''
 
 	name.innerText = getUser.name
 	lastname.innerText = getUser.lastname
 	title.innerText = getUser.title
+
+	if (getUser['number-za']) {
+		customNumber = 'ZA: ' + getUser['number-za']
+	}
+	if (getUser['number-uk']) {
+		customNumber += customNumber.length ? ' | UK: ' + getUser['number-uk'] : 'UK: ' + getUser['number-uk']
+	}
+	if (getUser['number-us']) {
+		customNumber += customNumber.length ? ' | US: ' + getUser['number-us'] : 'US: ' + getUser['number-us']
+	}
 	
-	if (getUser.number) {
-		number.innerHTML = getUser.number
+	if (getUser.number || customNumber.length) {
+		number.innerHTML = getUser.number || customNumber
 	} else {
 		number.remove()
 	}

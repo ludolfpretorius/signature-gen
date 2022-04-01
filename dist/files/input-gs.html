@@ -6,12 +6,18 @@
     <input type="text" class="data" name="title" placeholder="Job Title (Title Case)" data-radius="bottom">
     <hr>
     <select class="data" name="number" data-radius="all">
-        <option value="" disabled="disabled" selected="selected">Select team (optional)</option>
+        <option value="" disabled="disabled" selected="selected">Select number (optional)</option>
         <option value="">None</option>
         <option value="ZA: +27 87 550 6966 | UK: +44 20 3823 6998 | US: +1 617-977-6889">Enrolments</option>
         <option value="ZA: +27 21 830 9200 | UK: +44 20 3887 8107 | US: +1 339 215 1707">Global Success Team</option>
         <option value="ZA: +27 21 447 7565 | UK: +44 20 3457 5774 | US: +1 224 249 3522">Finance, Certificates, Enterprise Sales & Academic Staff</option>
+        <option value="Remote">Custom (specify)</option>
 	</select>
+    <div id="remote-address">
+        <input type="text" class="data" name="number-za" placeholder="ZA number">
+        <input type="text" class="data" name="number-uk" placeholder="UK number">
+        <input type="text" class="data" name="number-us" placeholder="US number">
+    </div>
 </div>
 <div class="btn gs" id="create-signature">Create Signature</div>
 

@@ -15,7 +15,17 @@ function observeUserInput() {
 				toggleRemoteAddress('hide')
 			}
 			if (getUser.address === 'Remote') {
-				updateUser('address', null)
+				updateUser('address', null) // Setting a value to null/falsey removes the entry form the user object
+			}
+
+			//GS signature specific
+			if (getUser.number === 'Remote') { 
+				updateUser('number', null)
+			}
+			if (getUser.number && getUser.number !== 'Remote') {
+				updateUser('number-za', null)
+				updateUser('number-uk', null)
+				updateUser('number-us', null)
 			}
 		}
 	})
